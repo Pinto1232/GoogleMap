@@ -1,6 +1,4 @@
-
-import { Link } from '@chakra-ui/layout'
-
+import { Link } from "@chakra-ui/layout";
 
 
 export default function Home() {

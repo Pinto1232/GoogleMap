@@ -5,9 +5,10 @@ import StoreDestails from "../components/allStoreDetails/StoreDetails";
 import Map from "../components/map/Map";
 import List from "../components/mapList/List";
 import Header from "../components/sidebar/Header";
+import { getPlacesDataApi } from "./api";
 
 
-
+/* 
 const places = [
   { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
   { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
@@ -21,7 +22,7 @@ const places = [
   { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
   { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
   { name: 'Sample Place1', address: 'Address 1', phone: '093922220' }
-];
+]; */
 
 const Home = () => {
   //Creating the coordinate state
@@ -30,6 +31,9 @@ const Home = () => {
   const [type, setType] = useState('restaurants')
   const [randing, setRating] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [bounds, setBounds] = useState(null)
+  // Create a state for places
+  const [places, setPlaces] = useState([])
 
 
   /* Fetching current location of the user */
@@ -42,7 +46,16 @@ const Home = () => {
   }, [])
 
 
-  {/* Get the actuall data */}
+  {/* Get the actuall data */ }
+  useEffect(() => {
+    setIsLoading(true)
+    getPlacesDataApi(bounds?.sw, bounds?.ne).then((data) => {
+      console.log(data);
+    setPlaces(data)
+    setIsLoading(false)
+    })
+    // If something changes these will re-render again
+  }, [coordinates, bounds])
 
   return (
     <Flex
@@ -58,7 +71,11 @@ const Home = () => {
 
       <List places={places} isLoading={isLoading} />
 
-      <Map setCoordinates={setCoordinates} coordinates={coordinates} />
+      <Map
+        setCoordinates={setCoordinates}
+        coordinates={coordinates}
+        setBounds={setBounds}
+      />
 
       {/* <StoreDestails /> */}
     </Flex>

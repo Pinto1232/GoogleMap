@@ -26,7 +26,7 @@ const Header = ({ setType, setCoordinates, setRating }) => {
 
           <Input
             type={'text'}
-            placeholder='Search stores...'
+            placeholder='Search Google Map...'
             variant={'filled'}
             fontSize={18}
             cursor={'pointer'}

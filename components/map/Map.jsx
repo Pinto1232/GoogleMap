@@ -3,7 +3,7 @@ import React from 'react'
 import GoogleMapReact from 'google-map-react'
 
 // destructuring the coordinates
-const Map = ({coordinates, setCoordinates}) => {
+const Map = ({coordinates, setCoordinates, setBounds}) => {
   console.log(setCoordinates);
   return (
     <Box width={"full"} height={"full"}>
@@ -11,10 +11,13 @@ const Map = ({coordinates, setCoordinates}) => {
         bootstrapURLKeys={{key : "AIzaSyC9WeFD1pgU_xK30QnK7OkgJdUbySxqOIU" }}
         defaultCenter={coordinates}
         center={coordinates}
-        defaultZoom={10}
+        defaultZoom={15}
         margin={[50,50,50,50]}
         options={""}
-        onChange={() => {}}
+        onChange={(e) => {
+          setCoordinates({lat : e.center.lat, lng : e.center.lng})
+          setBounds({ne : e.marginBounds.ne, sw : e.marginBounds.sw})
+        }}
         onChildClick = {() => {}}
       >
       </GoogleMapReact>

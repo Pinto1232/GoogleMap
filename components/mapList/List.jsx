@@ -1,7 +1,8 @@
 import { Box, Flex, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 import React from 'react'
+import StoreDestails from '../allStoreDetails/StoreDetails';
 
-const List = (places, isLoading) => {
+const List = ({ places, isLoading }) => {
   if (isLoading) return (
     <Flex
       direction={'column'}
@@ -15,31 +16,59 @@ const List = (places, isLoading) => {
       overflow='hidden'
       px={2}
     >
+      {/* Skelon reader */}
       <Box padding='6' boxShadow='lg' bg='white'>
         <SkeletonCircle size='10' />
-        <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+        <SkeletonText mt='4' noOfLines={3} spacing='4' skeletonHeight='2' />
       </Box>
 
       <Box padding='6' boxShadow='lg' bg='white'>
         <SkeletonCircle size='10' />
-        <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+        <SkeletonText mt='4' noOfLines={3} spacing='4' skeletonHeight='2' />
       </Box>
 
       <Box padding='6' boxShadow='lg' bg='white'>
         <SkeletonCircle size='10' />
-        <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+        <SkeletonText mt='4' noOfLines={3} spacing='4' skeletonHeight='2' />
       </Box>
 
       <Box padding='6' boxShadow='lg' bg='white'>
         <SkeletonCircle size='10' />
-        <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+        <SkeletonText mt='4' noOfLines={3} spacing='4' skeletonHeight='2' />
       </Box>
+
       <Box padding='6' boxShadow='lg' bg='white'>
         <SkeletonCircle size='10' />
-        <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+        <SkeletonText mt='4' noOfLines={3} spacing='4' skeletonHeight='2' />
       </Box>
     </Flex>
+  );
+
+  return (
+    <Flex
+      direction={'column'}
+      bg={'whiteAlpha.900'}
+      width={'37vw'}
+      height={'100vh'}
+      position={'absolute'}
+      left={0}
+      top={0}
+      zIndex={1}
+      overflow='hidden'
+      px={2}
+    >
+      <Flex
+        flex={1} overflowY={'scroll'}
+        mt={16}
+        direction={'column'}
+      >
+        {/* Rendering places */}
+        {
+          places && places.map((place, i) => <StoreDestails place={place} key={i}/>)
+        }
+      </Flex>
+    </Flex>
   )
-}
+};
 
 export default List

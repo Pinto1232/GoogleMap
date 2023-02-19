@@ -1,7 +1,8 @@
 import { Flex, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
+import { Rating } from '@material-ui/lab'
 import { Autocomplete } from '@react-google-maps/api'
 import React from 'react'
-import { BiSearch, BiStar } from 'react-icons/bi'
+import { BiChevronDown, BiHotel, BiMapAlt, BiRestaurant, BiSearch, BiStar } from 'react-icons/bi'
 
 const Header = ({ setType, setCoordinates, setRating }) => {
   return (
@@ -59,6 +60,9 @@ const Header = ({ setType, setCoordinates, setRating }) => {
           ml={4}
           shadow='lg'
           cursor={'pointer'}
+          _hover={{ bg: 'gray-100' }}
+          transition={'ease-in-out'}
+          transitionDuration={'0.3s'}
         >
           <Menu>
             <BiStar fontSize={25} />
@@ -70,7 +74,7 @@ const Header = ({ setType, setCoordinates, setRating }) => {
               <MenuItem
                 display={'flex'}
                 alignItems={'center'}
-                justifyContent={'center'}
+                justifyContent={'space-around'}
                 onClick={() => setRating("")}
               >
                 <Text fontSize={20} fontWeight={500} color={'gray.700'}>
@@ -81,15 +85,119 @@ const Header = ({ setType, setCoordinates, setRating }) => {
               <MenuItem
                 display={'flex'}
                 alignItems={'center'}
-                justifyContent={'center'}
-                onClick={() => setRating("")}
+                justifyContent={'space-around'}
+                onClick={() => setRating(2)}
               >
                 <Text fontSize={20} fontWeight={500} color={'orange.500'}>
                   2.0
                 </Text>
+
+                <Rating size='small' value={2} readOnly />
               </MenuItem>
+
+              <MenuItem
+                display={'flex'}
+                alignItems={'center'}
+                justifyContent={'space-around'}
+                onClick={() => setRating(3)}
+              >
+                <Text fontSize={20} fontWeight={500} color={'orange.500'}>
+                  3.0
+                </Text>
+
+                <Rating size='small' value={3} readOnly />
+              </MenuItem>
+
+              <MenuItem
+                display={'flex'}
+                alignItems={'center'}
+                justifyContent={'space-around'}
+                onClick={() => setRating(4)}
+              >
+                <Text fontSize={20} fontWeight={500} color={'orange.500'}>
+                  4.0
+                </Text>
+
+                <Rating size='small' value={4} readOnly />
+              </MenuItem>
+
+              <MenuItem
+                display={'flex'}
+                alignItems={'center'}
+                justifyContent={'space-around'}
+                onClick={() => setRating(5)}
+              >
+                <Text fontSize={20} fontWeight={500} color={'orange.500'}>
+                  4.5
+                </Text>
+
+                <Rating size='small' value={5} readOnly />
+              </MenuItem>
+
             </MenuList>
           </Menu>
+
+          <BiChevronDown fontSize={25} />
+        </Flex>
+
+        {/* Stores */}
+        <Flex
+          alignItems={'center'}
+          justifyContent={'center'}
+          px={4}
+          py={2}
+          bg={'white'}
+          rounded={'full'}
+          ml={4}
+          shadow='lg'
+          cursor={'pointer'}
+          _hover={{ bg: 'gray-100' }}
+          transition={'ease-in-out'}
+          transitionDuration={'0.3s'}
+          onClick={() => setType("restaurants")}
+        >
+          <BiRestaurant fontSize={25} />
+          <Text ml={3} fontSize={16} fontWeight={500}>Restaurantes</Text>
+        </Flex>
+
+        {/* Hotels */}
+        <Flex
+          alignItems={'center'}
+          justifyContent={'center'}
+          px={4}
+          py={2}
+          bg={'white'}
+          rounded={'full'}
+          ml={4}
+          shadow='lg'
+          cursor={'pointer'}
+          _hover={{ bg: 'gray-100' }}
+          transition={'ease-in-out'}
+          transitionDuration={'0.3s'}
+          onClick={() => setType("hotels")}
+        >
+          <BiHotel fontSize={25} />
+          <Text ml={3} fontSize={16} fontWeight={500}>Hotels</Text>
+        </Flex>
+
+        {/* Attractions */}
+        <Flex
+          alignItems={'center'}
+          justifyContent={'center'}
+          px={4}
+          py={2}
+          bg={'white'}
+          rounded={'full'}
+          ml={4}
+          shadow='lg'
+          cursor={'pointer'}
+          _hover={{ bg: 'gray-100' }}
+          transition={'ease-in-out'}
+          transitionDuration={'0.3s'}
+          onClick={() => setType("attactions")}
+        >
+          <BiMapAlt fontSize={25} />
+          <Text ml={3} fontSize={16} fontWeight={500}>Attactioons</Text>
         </Flex>
 
 

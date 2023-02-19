@@ -7,12 +7,28 @@ import Header from "../components/sidebar/Header";
 
 
 
+const places = [
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'},
+  {name: 'Sample Place1', address: 'Address 1', phone: '093922220'}
+];
+
 const Home = () => {
   //Creating the coordinate state
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 })
   // creating the type 
-  const [type, setType] = useState('mackdonald_stores')
+  const [type, setType] = useState('restaurants')
   const [randing, setRating] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
 
   return (
     <Flex
@@ -26,7 +42,7 @@ const Home = () => {
     >
       <Header setType={setType} setCoordinates={setCoordinates} setRating={setRating} />
 
-      {/*<List /> */}
+      <List places = {places} isLoading={isLoading} />
 
       <Map setCoordinates={setCoordinates} coordinates={coordinates} />
 

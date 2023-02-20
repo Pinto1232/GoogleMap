@@ -6,23 +6,10 @@ import Map from "../components/map/Map";
 import List from "../components/mapList/List";
 import Header from "../components/sidebar/Header";
 import { getPlacesDataApi } from "./api";
+import Head from "next/head";
 
 
-/* 
-const places = [
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' },
-  { name: 'Sample Place1', address: 'Address 1', phone: '093922220' }
-]; */
+
 
 const Home = () => {
   //Creating the coordinate state
@@ -79,6 +66,9 @@ const Home = () => {
       maxHeight={"100vh"}
       position={"relative"}
     >
+      <Head>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyC9WeFD1pgU_xK30QnK7OkgJdUbySxqOIU"></script>
+      </Head>
       <Header setType={setType} setCoordinates={setCoordinates} setRating={setRating} />
 
       <List places={filteredPlaces.length ? filteredPlaces : places} isLoading={isLoading} />
@@ -87,7 +77,7 @@ const Home = () => {
         setCoordinates={setCoordinates}
         coordinates={coordinates}
         setBounds={setBounds}
-        places = {filteredPlaces.length ? filteredPlaces : places}
+        places={filteredPlaces.length ? filteredPlaces : places}
       />
 
       {/* <StoreDestails /> */}

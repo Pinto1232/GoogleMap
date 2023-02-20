@@ -1,6 +1,7 @@
 import { Flex, Text, Image, Badge, Tooltip } from '@chakra-ui/react'
 import { Rating } from '@material-ui/lab'
 import React from 'react'
+import { IoLocation } from 'react-icons/io5'
 
 const StoreDetails = ({ place }) => {
   return (
@@ -9,7 +10,7 @@ const StoreDetails = ({ place }) => {
       px={4}
       py={2}
       mb={2}
-      shadow='lg'
+      shadow='sm'
       direction={'column'}
       alignItems={'start'}
       justifyContent={'space-between'}
@@ -96,6 +97,27 @@ const StoreDetails = ({ place }) => {
           }
         </Flex>
       </Flex>
+
+      {place.address && (
+        <Flex
+          alignItems={'center'}
+          width={'full'}
+          px={1}
+          my={2}
+        >
+          <IoLocation fontSize={20} color={'gray'}>
+            <Text
+              isTruncated
+              fontSize={'small'}
+              fontWeight={500}
+              color={'gray.700'}
+              ml={1}
+            >
+            {place.address ? place.address : 'address not found'}
+            </Text>
+          </IoLocation>
+        </Flex>
+      )}
     </Flex>
   )
 }

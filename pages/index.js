@@ -29,11 +29,12 @@ const Home = () => {
   const [coordinates, setCoordinates] = useState({})
   // creating the type 
   const [type, setType] = useState('restaurants')
-  const [randing, setRating] = useState("")
+  const [ratings, setRating] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [bounds, setBounds] = useState(null)
   // Create a state for places
   const [places, setPlaces] = useState([])
+  const [filteredPlaces, setFilteredPlaces] = useState([])
 
 
   /* Fetching current location of the user */
@@ -46,16 +47,27 @@ const Home = () => {
   }, [])
 
 
+  {/* Rating userffect */ }
+  useEffect(() => {
+    const filteredData = places.filter((place) =>
+      place.rating > ratings)
+    setFilteredPlaces(filteredData)
+    console.log(`Ratings`, ratings);
+  }, [ratings])
+
+
+
   {/* Get the actuall data */ }
   useEffect(() => {
     setIsLoading(true)
-    getPlacesDataApi(bounds?.sw, bounds?.ne).then((data) => {
+    getPlacesDataApi(type, bounds?.sw, bounds?.ne).then((data) => {
       console.log(data);
-    setPlaces(data)
-    setIsLoading(false)
+      setPlaces(data)
+      setIsLoading(false)
     })
     // If something changes these will re-render again
-  }, [coordinates, bounds])
+  }, [type, coordinates, bounds])
+
 
   return (
     <Flex
@@ -69,12 +81,13 @@ const Home = () => {
     >
       <Header setType={setType} setCoordinates={setCoordinates} setRating={setRating} />
 
-      <List places={places} isLoading={isLoading} />
+      <List places={filteredPlaces.length ? filteredPlaces : places} isLoading={isLoading} />
 
       <Map
         setCoordinates={setCoordinates}
         coordinates={coordinates}
         setBounds={setBounds}
+        places = {filteredPlaces.length ? filteredPlaces : places}
       />
 
       {/* <StoreDestails /> */}

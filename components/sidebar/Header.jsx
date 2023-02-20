@@ -2,9 +2,12 @@ import { Flex, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem,
 import { Rating } from '@material-ui/lab'
 import { Autocomplete } from '@react-google-maps/api'
 import React from 'react'
+import { useState } from 'react'
 import { BiChevronDown, BiHotel, BiMapAlt, BiRestaurant, BiSearch, BiStar } from 'react-icons/bi'
 
 const Header = ({ setType, setCoordinates, setRating }) => {
+  const [ autocomplete, setAutocomplete] = useState(null)
+  
   return (
     <Flex
       position={'absolute'}
@@ -16,8 +19,7 @@ const Header = ({ setType, setCoordinates, setRating }) => {
       zIndex={101}
     >
       <Flex>
-        {/* <Autocomplete 
-  >*/}
+      <Autocomplete onLoad={} onPlaceChanged={}>
         <InputGroup width={'35vw'} shadow='lg'>
           <InputRightElement
             pointerEvents={'none'}
@@ -39,7 +41,7 @@ const Header = ({ setType, setCoordinates, setRating }) => {
 
           </Input>
         </InputGroup>
-        {/* </Autocomplete> */}
+        </Autocomplete> 
 
         {/* menu list*/}
         <Flex
@@ -194,10 +196,10 @@ const Header = ({ setType, setCoordinates, setRating }) => {
           _hover={{ bg: 'gray-100' }}
           transition={'ease-in-out'}
           transitionDuration={'0.3s'}
-          onClick={() => setType("attactions")}
+          onClick={() => setType("attractions")}
         >
           <BiMapAlt fontSize={25} />
-          <Text ml={3} fontSize={16} fontWeight={500}>Attactioons</Text>
+          <Text ml={3} fontSize={16} fontWeight={500}>Attractions</Text>
         </Flex>
 
 

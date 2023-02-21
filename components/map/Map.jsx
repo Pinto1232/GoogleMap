@@ -6,6 +6,82 @@ import { useState } from 'react';
 import { IconButton, Image } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 
+
+const mapStyles = [
+  {
+    featureType: "road",
+    elementType: "labels.icon",
+    stylers: [
+      {
+        visibility: "on"
+      }
+    ]
+  },
+  {
+    featureType: "road",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#616161"
+      }
+    ]
+  },
+  {
+    featureType: "road",
+    elementType: "geometry.stroke",
+    stylers: [
+      {
+        color: "#b9b9b9"
+      }
+    ]
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#ffffff"
+      }
+    ]
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry.stroke",
+    stylers: [
+      {
+        color: "#b9b9b9"
+      }
+    ]
+  },
+  {
+    featureType: "poi",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#757575"
+      }
+    ]
+  },
+  {
+    featureType: "administrative",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#b9b9b9"
+      }
+    ]
+  },
+  {
+    featureType: "water",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#9e9e9e"
+      }
+    ]
+  }
+];
+
 // destructuring the coordinates
 const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
   // Creating two state for fectching data when a location icon is clicked
@@ -24,9 +100,11 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
         bootstrapURLKeys={{ key: "AIzaSyC9WeFD1pgU_xK30QnK7OkgJdUbySxqOIU" }}
         defaultCenter={coordinates}
         center={coordinates}
-        defaultZoom={15}
+        defaultZoom={10}
         margin={[50, 50, 50, 50]}
-        options={""}
+        options={{
+          styles: mapStyles
+        }}
         onChange={(e) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng })
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw })

@@ -88,6 +88,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
   const [isCard, setIsCard] = useState(false)
   const [cardData, setCardData] = useState()
   const [isOpen, setIsOpen] = useState(true);
+  
 
   const handleClose = () => {
     setIsOpen(false);
@@ -100,7 +101,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
         bootstrapURLKeys={{ key: "AIzaSyC9WeFD1pgU_xK30QnK7OkgJdUbySxqOIU" }}
         defaultCenter={coordinates}
         center={coordinates}
-        defaultZoom={10}
+        defaultZoom={15}
         margin={[50, 50, 50, 50]}
         options={{
           styles: mapStyles
@@ -118,6 +119,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
         {/* Set the location icon in the map */}
         {places?.map((place, i) => (
           <Box
+            key={i} 
             lat={Number(place.latitude)}
             lng={Number(place.longitude)}
             position={'relative'}

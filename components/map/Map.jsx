@@ -88,7 +88,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
   const [isCard, setIsCard] = useState(false)
   const [cardData, setCardData] = useState()
   const [isOpen, setIsOpen] = useState(true);
-  
+
 
   const handleClose = () => {
     setIsOpen(false);
@@ -119,7 +119,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
         {/* Set the location icon in the map */}
         {places?.map((place, i) => (
           <Box
-            key={i} 
+            key={i}
             lat={Number(place.latitude)}
             lng={Number(place.longitude)}
             position={'relative'}

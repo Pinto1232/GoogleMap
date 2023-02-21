@@ -127,9 +127,9 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
           </Box>
         ))}
 
+
         {/* Redering the card */}
-        
-        {isCard && isOpen  && (
+        {isCard && isOpen && (
           <Box
             width={'400px'}
             height={'250px'}
@@ -140,7 +140,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
             shadow={'lg'}
             rounded={'lg'}
           >
-         
+
             <IconButton
               icon={<CloseIcon />}
               variant="ghost"
@@ -150,7 +150,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
               top={2}
               right={2}
             />
-         
+
             <Image
               objectFit={'cover'}
               width={'full'}
@@ -159,7 +159,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
               rounded={'sm'}
               mx={1}
               src={cardData.photo ? cardData.photo.images.large.url : 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/media/985748436085f06bb2bd63686ff491a5.jpg?compress=1&resize=400x300&vertical=top'}
-            /> 
+            />
 
             <Text textTransform={'uppercase'} width={40}
               fontWeight={'500'}
@@ -176,7 +176,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
             <Text textTransform={'uppercase'} width={40}
               fontWeight={'500'}
               fontSize={'md'}
-              isTruncated 
+              isTruncated
               fontStyle={'bold'}
               whiteSpace={'nowrap'}
               cursor={'pointer'}
@@ -194,20 +194,20 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
               cursor={'pointer'}
               px={5}
             >
-             X {cardData.location_id ? cardData.location_id : 'restaurant not found'}
+              X {cardData.location_id ? cardData.location_id : 'restaurant not found'}
             </Text>
 
             <Text textTransform={'uppercase'} width={40}
-            fontWeight={'500'}
-            fontSize={'md'}
-            /* isTruncated */
-            fontStyle={'bold'}
-            whiteSpace={'nowrap'}
-            cursor={'pointer'}
-            px={5}
-          >
-           Y {cardData.latitude ? cardData.latitude : 'restaurant not found'}
-          </Text>
+              fontWeight={'500'}
+              fontSize={'md'}
+              /* isTruncated */
+              fontStyle={'bold'}
+              whiteSpace={'nowrap'}
+              cursor={'pointer'}
+              px={5}
+            >
+              Y {cardData.latitude ? cardData.latitude : 'restaurant not found'}
+            </Text>
           </Box>
         )}
       </GoogleMapReact>

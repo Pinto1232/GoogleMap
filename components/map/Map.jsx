@@ -11,8 +11,6 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
   // Creating two state for fectching data when a location icon is clicked
   const [isCard, setIsCard] = useState(false)
   const [cardData, setCardData] = useState()
-
-
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
@@ -52,7 +50,8 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
         ))}
 
         {/* Redering the card */}
-        {isCard && (
+        
+        {isCard && isOpen  && (
           <Box
             width={'400px'}
             height={'250px'}
@@ -63,6 +62,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
             shadow={'lg'}
             rounded={'lg'}
           >
+         
             <IconButton
               icon={<CloseIcon />}
               variant="ghost"
@@ -72,7 +72,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
               top={2}
               right={2}
             />
-
+         
             <Image
               objectFit={'cover'}
               width={'full'}

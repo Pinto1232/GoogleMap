@@ -2,9 +2,6 @@ import axios from "axios";
 
 
 
-
-
-
 //Passing South west and North west as parameters
 export const getPlacesDataApi = async (type, sw, ne) => {
     try {
